@@ -3,19 +3,29 @@ import Product from './pages/Product';
 import Pricing from './pages/Pricing';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
-import PageNav from './components/PageNav';
+import AppLayout from './pages/AppLayout';
+// import PageNav from './components/PageNav';
 
 function App() {
+  const routes: {
+    path: string;
+    element: React.ReactNode;
+  }[] = [
+    { path: '/', element: <Home /> },
+    { path: '/pricing', element: <Pricing /> },
+    { path: '/product', element: <Product /> },
+    { path: '/app', element: <AppLayout /> },
+    { path: '*', element: <NotFound /> },
+  ];
   return (
     <div>
-      <PageNav />
-      <h1>Hello world</h1>
+      {/* <PageNav /> */}
+
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/pricing' element={<Pricing />} />
-          <Route path='/product' element={<Product />} />
-          <Route path='*' element={<NotFound />} />
+          {routes.map((route) => (
+            <Route path={route.path} element={route.element} />
+          ))}
         </Routes>
       </BrowserRouter>
     </div>

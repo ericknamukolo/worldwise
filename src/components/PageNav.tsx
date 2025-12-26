@@ -1,4 +1,4 @@
-import React from 'react';
+import styles from './PageNav.module.css';
 import { NavLink } from 'react-router-dom';
 
 export default function PageNav() {
@@ -11,7 +11,7 @@ export default function PageNav() {
     { path: '/product', name: 'Product' },
   ];
   return (
-    <nav>
+    <nav className={styles.nav}>
       {paths.map((path) => (
         <ul>
           <li>
